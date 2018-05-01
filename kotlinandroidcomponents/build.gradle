@@ -1,0 +1,73 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api "com.android.support:appcompat-v7:$android_support_version"
+    api "com.android.support:recyclerview-v7:$android_support_version"
+    api "com.android.support.constraint:constraint-layout:$constraint_layout_version"
+    testApi "junit:junit:$junit_version"
+    androidTestApi "com.android.support.test:runner:$test_runner_version"
+    androidTestApi "com.android.support.test.espresso:espresso-core:$espresso_version"
+
+    //Date
+    api "com.jakewharton.threetenabp:threetenabp:$threetenabp_version"
+
+    //architecture components
+    api "android.arch.lifecycle:runtime:$arch_components_version"
+    api "android.arch.lifecycle:extensions:$arch_components_version"
+    kapt "android.arch.lifecycle:compiler:$arch_components_version"
+    api "android.arch.persistence.room:runtime:$arch_persistance_version"
+    kapt "android.arch.persistence.room:compiler:$arch_persistance_version"
+    api "android.arch.persistence.room:rxjava2:$arch_persistance_version"
+
+    //TODO all I really need here is javax.inject
+    implementation "com.google.dagger:dagger:$dagger_version"
+
+    //image
+    api "com.github.bumptech.glide:glide:$glide_version"
+    api "jp.wasabeef:glide-transformations:$glide_transformations_version"
+
+    //api
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    //logging
+    api "com.jakewharton.timber:timber:$timber_version"
+
+    //kotlin
+    api "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    kapt "com.android.databinding:compiler:$android_plugin_version"
+    api "androidx.core:core-ktx:$android_core_kotlin_extensions"
+}

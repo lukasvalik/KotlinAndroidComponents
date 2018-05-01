@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">KotlinAndroidComponents</string>
+    <string name="retry">Retry</string>
+</resources>
